@@ -8,9 +8,9 @@
 
 import XCTest
 import Vision
-@testable import PoseEstimation_CoreML
+@testable import PostureCorrector
 
-class PoseEstimation_CoreMLTests: XCTestCase {
+class PostureCorrectorTests: XCTestCase {
     
     // MARK: - Vision Properties
     var cpmRequest: VNCoreMLRequest?
