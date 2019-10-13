@@ -1,9 +1,7 @@
+//  PostureCorrector
 //
-//  Measure.swift
-//  TurtleApp-CoreML
-//
-//  Created by GwakDoyoung on 03/07/2018.
-//  Copyright © 2018 GwakDoyoung. All rights reserved.
+//  Created by Anita Shen on 10/12/19.
+//  Copyright © 2019 Anita Shen. All rights reserved.
 //
 
 import UIKit

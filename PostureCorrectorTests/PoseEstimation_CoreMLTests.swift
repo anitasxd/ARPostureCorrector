@@ -1,9 +1,7 @@
+//  PostureCorrector
 //
-//  PoseEstimation_CoreMLTests.swift
-//  PoseEstimation-CoreMLTests
-//
-//  Created by GwakDoyoung on 31/01/2019.
-//  Copyright © 2019 tucan9389. All rights reserved.
+//  Created by Anita Shen on 10/12/19.
+//  Copyright © 2019 Anita Shen. All rights reserved.
 //
 
 import XCTest

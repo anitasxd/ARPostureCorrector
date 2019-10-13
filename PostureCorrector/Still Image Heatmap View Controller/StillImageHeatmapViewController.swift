@@ -1,9 +1,7 @@
+//  PostureCorrector
 //
-//  StillImageHeatmapViewController.swift
-//  PoseEstimation-CoreML
-//
-//  Created by Doyoung Gwak on 25/04/2019.
-//  Copyright © 2019 tucan9389. All rights reserved.
+//  Created by Anita Shen on 10/12/19.
+//  Copyright © 2019 Anita Shen. All rights reserved.
 //
 
 import UIKit

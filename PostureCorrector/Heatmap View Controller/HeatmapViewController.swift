@@ -1,9 +1,7 @@
+//  PostureCorrector
 //
-//  HeatmapViewController.swift
-//  PoseEstimation-CoreML
-//
-//  Created by GwakDoyoung on 02/08/2018.
-//  Copyright © 2018 tucan9389. All rights reserved.
+//  Created by Anita Shen on 10/12/19.
+//  Copyright © 2019 Anita Shen. All rights reserved.
 //
 
 import UIKit

@@ -1,3 +1,9 @@
+//  PostureCorrector
+//
+//  Created by Anita Shen on 10/12/19.
+//  Copyright © 2019 Anita Shen. All rights reserved.
+//
+
 import UIKit
 
 extension UIImage {
