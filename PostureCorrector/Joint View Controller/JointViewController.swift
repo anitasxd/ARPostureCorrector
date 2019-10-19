@@ -39,6 +39,7 @@ class JointViewController: UIViewController {
     // Postprocess
     var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
     var mvfilters: [MovingAverageFilter] = []
+    private var mvFilterAngle: MovingAverageFilterAngle = MovingAverageFilterAngle()
     
     // Inference Result Data
     private var tableData: [PredictedPoint?] = []
@@ -166,6 +167,20 @@ extension JointViewController {
                 // draw line
                 self.jointView.bodyPoints = predictedPoints
                 
+                if let p1: CGPoint = predictedPoints[0]?.maxPoint,
+                    let p2: CGPoint = predictedPoints[2]?.maxPoint,
+                    let p3: CGPoint = predictedPoints[5]?.maxPoint{
+                    let result: Double = Double.radianAngle(p1: p1, p2: p2, p3: p3)
+                    mvFilterAngle.addAngle(newAngle: result)
+                    let angle = mvFilterAngle.angle
+                    //self.angleLabel.text = "\(String(format: "%.1f", angle))"
+                    if abs(angle) > 284 {
+                        print("BAD POSTURE")
+                    } else {
+                        print("GOOD POSTURE")
+                    }
+                }
+                
                 // show key points description
                 self.showKeypointsDescription(with: predictedPoints)
                 
@@ -210,5 +225,34 @@ extension JointViewController: 📏Delegate {
         self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) ms"
         self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) ms"
         self.fpsLabel.text = "fps: \(fps)"
+    }
+}
+
+class MovingAverageFilterAngle {
+    
+    let maximumCount: Int = 8
+    var angles: [Double] = []
+    func addAngle(newAngle: Double) {
+        angles.append(newAngle)
+        if angles.count > maximumCount {
+            angles.remove(at: 0)
+        }
+    }
+    var angle: Double {
+        guard angles.count > 0 else { return 0 }
+        return (angles.reduce(0) { $0 + $1 }) / Double(angles.count)
+    }
+}
+
+
+extension Double {
+    static func angle(p1: CGPoint, p2: CGPoint, p3: CGPoint) -> Double {
+        let angle1: Double = Double(atan2(p1.y - p3.y, p1.x - p3.x));
+        let angle2: Double = Double(atan2(p2.y - p3.y, p2.x - p3.x));
+        
+        return angle1 - angle2;
+    }
+    static func radianAngle(p1: CGPoint, p2: CGPoint, p3: CGPoint) -> Double {
+        return (angle(p1: p1, p2: p2, p3: p3) / pi) * 180
     }
 }
