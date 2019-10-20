@@ -29,6 +29,8 @@
 		71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
 		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 		C08FA20123525A04002AB6E9 /* hourglass_model in Resources */ = {isa = PBXBuildFile; fileRef = C08FA1FF23525A04002AB6E9 /* hourglass_model */; };
+		C0D65F4E235BCA4F00E58A37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */; };
+		C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		71F1455122F1C890000ED787 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 		C08FA1FF23525A04002AB6E9 /* hourglass_model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = hourglass_model; path = models/hourglass_model; sourceTree = SOURCE_ROOT; };
+		C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
+				C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */,
+				C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */,
 			);
 			path = PostureCorrector;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */,
+				C0D65F4E235BCA4F00E58A37 /* StartViewController.swift in Sources */,
 				55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */,
 				71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
@@ -304,6 +311,7 @@
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
+				C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
 				714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */,
 				557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */,

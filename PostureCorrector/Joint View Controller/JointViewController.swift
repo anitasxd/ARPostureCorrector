@@ -22,6 +22,8 @@ class JointViewController: UIViewController {
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
+    var postureAlert: UIView!
+    
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
     
@@ -47,6 +49,9 @@ class JointViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
+        view.addSubview(postureAlert)
         
         // setup the model
         setUpModel()
@@ -91,7 +96,7 @@ class JointViewController: UIViewController {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
         videoCapture.fps = 30
-        videoCapture.setUp(sessionPreset: .vga640x480) { success in
+        videoCapture.setUp(sessionPreset: .vga640x480, cameraPosition: .front) { success in
             
             if success {
                 // add preview view on the layer
@@ -167,17 +172,19 @@ extension JointViewController {
                 // draw line
                 self.jointView.bodyPoints = predictedPoints
                 
-                if let p1: CGPoint = predictedPoints[0]?.maxPoint,
-                    let p2: CGPoint = predictedPoints[2]?.maxPoint,
-                    let p3: CGPoint = predictedPoints[5]?.maxPoint{
+                if let p1: CGPoint = predictedPoints[0]?.maxPoint, //neck point
+                    let p2: CGPoint = predictedPoints[2]?.maxPoint, //right shoulder
+                    let p3: CGPoint = predictedPoints[5]?.maxPoint{ //left shoulder
                     let result: Double = Double.radianAngle(p1: p1, p2: p2, p3: p3)
                     mvFilterAngle.addAngle(newAngle: result)
                     let angle = mvFilterAngle.angle
                     //self.angleLabel.text = "\(String(format: "%.1f", angle))"
                     if abs(angle) > 284 {
-                        print("BAD POSTURE")
+                        print("good POSTURE")
+                        self.postureAlert.backgroundColor = .green
                     } else {
-                        print("GOOD POSTURE")
+                        print("bad POSTURE")
+                        self.postureAlert.backgroundColor = .red
                     }
                 }
                 

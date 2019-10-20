@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ChF-RA-qh1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TPX-Ex-2sK">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Start View Controller-->
+        <scene sceneID="1Nn-8k-PnI">
+            <objects>
+                <viewController id="TPX-Ex-2sK" customClass="StartViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0qR-Yq-h8w" customClass="Start">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Cr2-vp-pje"/>
+                    </view>
+                    <connections>
+                        <segue destination="9CU-0Y-vts" kind="show" identifier="toSession" id="9x7-Cz-ZH4"/>
+                        <segue destination="sQQ-li-RsW" kind="show" identifier="toSettings" id="7N0-z1-Skg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGB-BK-vZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="368" y="-496"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="VBB-st-Lny">
+            <objects>
+                <viewController id="sQQ-li-RsW" customClass="SettingsViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LfY-BI-HxS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="a4r-fG-wcI"/>
+                    </view>
+                    <connections>
+                        <segue destination="9CU-0Y-vts" kind="show" identifier="toMain" id="alQ-0b-s6m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8h-6J-F9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1304" y="-900"/>
+        </scene>
         <!--Joint-->
         <scene sceneID="kfC-DX-erp">
             <objects>
@@ -19,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ANC-ac-LRL">
-                                <rect key="frame" x="0.0" y="588" width="375" height="141"/>
+                                <rect key="frame" x="0.0" y="588" width="375" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="vuI-qX-Ro3" detailTextLabel="ao9-EW-FOm" rowHeight="30" style="IBUITableViewCellStyleValue1" id="vHG-rq-dWg">
@@ -591,4 +628,7 @@ on top right</string>
             <point key="canvasLocation" x="1341.5999999999999" y="1829.5566502463055"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="alQ-0b-s6m"/>
+    </inferredMetricsTieBreakers>
 </document>
