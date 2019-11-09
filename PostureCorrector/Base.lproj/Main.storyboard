@@ -14,7 +14,7 @@
         <scene sceneID="1Nn-8k-PnI">
             <objects>
                 <viewController id="TPX-Ex-2sK" customClass="StartViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0qR-Yq-h8w" customClass="Start">
+                    <view key="view" contentMode="scaleToFill" id="0qR-Yq-h8w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,11 +41,12 @@
                     </view>
                     <connections>
                         <segue destination="9CU-0Y-vts" kind="show" identifier="toMain" id="alQ-0b-s6m"/>
+                        <segue destination="TPX-Ex-2sK" kind="show" identifier="toMain" id="jQq-Tl-D6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8h-6J-F9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304" y="-900"/>
+            <point key="canvasLocation" x="1303" y="-892"/>
         </scene>
         <!--Joint-->
         <scene sceneID="kfC-DX-erp">

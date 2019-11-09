@@ -14,15 +14,26 @@ class SettingsViewController: UIViewController {
     var screenTitle: UILabel!
     var thresholdSlider: UISlider!
     var thresholdLabel: UILabel!
-    var thresholdValue: Int = 1
+    
     var durationSlider: UISlider!
     var durationLabel: UILabel!
+    
+    var thresholdValue: Float = 1
+    var durationValue: Float = 1
+    
     var applyButton: UIButton!
+    let step: Float=0.1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        thresholdSlider.setValue(UserDefaults.standard.float(forKey: "thresholdValue"), animated: false)
+        durationSlider.setValue(UserDefaults.standard.float(forKey: "durationValue"), animated: false)
     }
     
     func setupLayout() {
@@ -37,7 +48,9 @@ class SettingsViewController: UIViewController {
         view.addSubview(screenTitle)
         
         thresholdSlider = UISlider(frame: CGRect(x: 3 * (view.frame.width/7), y: 200, width: 150, height: 30))
-        //        thresholdSlider.addTarget(self, action: Selector(("sliderValueDidChange")),for: .valueChanged)
+        thresholdSlider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
+        //        self.thresholdSlider.value = thresholdValue
+        thresholdSlider.setValue(thresholdValue, animated: false)
         view.addSubview(thresholdSlider)
         
         thresholdLabel = UILabel(frame: CGRect(x: 20, y: 190, width: view.frame.width-60, height: 60))
@@ -47,9 +60,12 @@ class SettingsViewController: UIViewController {
         //        thresholdLabel.text = "\(thresholdSlider.value)"
         view.addSubview(thresholdLabel)
         
-        thresholdValue = Int(thresholdSlider.value)
+        //        thresholdValue = Int(thresholdSlider.value)
         
         durationSlider = UISlider(frame: CGRect(x: 3 * (view.frame.width/7), y: 300, width: 150, height: 30))
+        durationSlider.addTarget(self, action: #selector(sliderValueDidChange2), for: .valueChanged)
+        //        self.durationSlider.value = durationValue
+        durationSlider.setValue(durationValue, animated: false)
         view.addSubview(durationSlider)
         
         durationLabel = UILabel(frame: CGRect(x: 20, y: 290, width: view.frame.width-60, height: 60))
@@ -68,40 +84,35 @@ class SettingsViewController: UIViewController {
         applyButton.layer.cornerRadius = applyButton.frame.height/4
         applyButton.setTitleColor(.white, for: .normal)
         applyButton.addTarget(self, action: #selector(goBackToMain), for: .touchUpInside)
-
+        
         view.addSubview(applyButton)
-        
-        //        func sliderValueDidChange(sender: UISlider!) {
-        //            let currentValue = Int(sender.value)
-        //            thresholdValue = currentValue
-        //            print(thresholdValue)
-        //        }
-        
-        //        func sliderValueDidChange(sender: UISlider!)
-        //        {
-        //            print("Threshold Value: \(sender.value)")
-        //            thresholdLabel.text = "\(sender.value)"
-        //        }
-        
-        //        func valueChangeEnded(slider: UISlider) {
-        //          print("save to user defaults")
-        //            UserDefaults.standard.set(slider.value, forKey: "slider_value")
-        //            print(thresholdValue)
-        //        }
-        //
-        //        thresholdValue = Int(UserDefaults.standard.float(forKey: "slider_value"))
-        //        print("FINAL")
-        //        print(thresholdValue)
-        
-        
-        
-        
         
     }
     
     @objc func goBackToMain() {
         performSegue(withIdentifier: "toMain", sender: self)
+        UserDefaults.standard.set(thresholdSlider.value, forKey: "thresholdValue")
+        UserDefaults.standard.set(durationSlider.value, forKey: "durationValue")
+    }
+    
+    @objc func sliderValueDidChange(_ sender: UISlider!) {
+        print("Slider value changed")
+        //        thresholdLabel.text = "\(sender.value)"
         
+        // Use this code below only if you want UISlider to snap to values step by step
+        let roundedStepValue = round(sender.value / step) * step
+        sender.value = roundedStepValue
+        
+        print("Slider step value \(Int(roundedStepValue))")
+        print("Threshold Value: \(sender.value)")
+        //        thresholdLabel.text = "\(sender.value)"
+        //        thresholdValue = sender.value
+    }
+    
+    @objc func sliderValueDidChange2(_ sender: UISlider!) {
+        print("Slider value changed")
+        let roundedStepValue2 = round(sender.value / step) * step
+        sender.value = roundedStepValue2
     }
     
     
