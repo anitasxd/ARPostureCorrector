@@ -30,10 +30,10 @@
 		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 		C08FA20123525A04002AB6E9 /* hourglass_model in Resources */ = {isa = PBXBuildFile; fileRef = C08FA1FF23525A04002AB6E9 /* hourglass_model */; };
 		C09F93C0236E003500AB8F68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93BF236E003500AB8F68 /* Session.swift */; };
-		C09F93C3236E064200AB8F68 /* SessionVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C2236E064200AB8F68 /* SessionVC-UI.swift */; };
-		C09F93C5236E065300AB8F68 /* SessionVC-Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C4236E065300AB8F68 /* SessionVC-Collection.swift */; };
-		C09F93C7236E081B00AB8F68 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C6236E081B00AB8F68 /* SearchViewController.swift */; };
-		C09F93C9236E0C3F00AB8F68 /* SessionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C8236E0C3F00AB8F68 /* SessionCollectionCell.swift */; };
+		C09F93C3236E064200AB8F68 /* StatsVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */; };
+		C09F93C5236E065300AB8F68 /* StatsVC-Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C4236E065300AB8F68 /* StatsVC-Collection.swift */; };
+		C09F93C7236E081B00AB8F68 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C6236E081B00AB8F68 /* StatsViewController.swift */; };
+		C09F93C9236E0C3F00AB8F68 /* StatsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */; };
 		C09F93D3236E1D9400AB8F68 /* UIAttributeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93D2236E1D9400AB8F68 /* UIAttributeExtensions.swift */; };
 		C0D65F4E235BCA4F00E58A37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */; };
 		C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */; };
@@ -75,10 +75,10 @@
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 		C08FA1FF23525A04002AB6E9 /* hourglass_model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = hourglass_model; path = "PostureCorrector/ML Models/hourglass_model"; sourceTree = SOURCE_ROOT; };
 		C09F93BF236E003500AB8F68 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		C09F93C2236E064200AB8F68 /* SessionVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionVC-UI.swift"; sourceTree = "<group>"; };
-		C09F93C4236E065300AB8F68 /* SessionVC-Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionVC-Collection.swift"; sourceTree = "<group>"; };
-		C09F93C6236E081B00AB8F68 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		C09F93C8236E0C3F00AB8F68 /* SessionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCollectionCell.swift; sourceTree = "<group>"; };
+		C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatsVC-UI.swift"; sourceTree = "<group>"; };
+		C09F93C4236E065300AB8F68 /* StatsVC-Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatsVC-Collection.swift"; sourceTree = "<group>"; };
+		C09F93C6236E081B00AB8F68 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionCell.swift; sourceTree = "<group>"; };
 		C09F93D2236E1D9400AB8F68 /* UIAttributeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAttributeExtensions.swift; sourceTree = "<group>"; };
 		C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -189,15 +189,15 @@
 			path = "Still Image Heatmap View Controller";
 			sourceTree = "<group>";
 		};
-		C09F93C1236E062D00AB8F68 /* Session View Controller */ = {
+		C09F93C1236E062D00AB8F68 /* Stats View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C09F93C2236E064200AB8F68 /* SessionVC-UI.swift */,
-				C09F93C4236E065300AB8F68 /* SessionVC-Collection.swift */,
-				C09F93C6236E081B00AB8F68 /* SearchViewController.swift */,
-				C09F93C8236E0C3F00AB8F68 /* SessionCollectionCell.swift */,
+				C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */,
+				C09F93C4236E065300AB8F68 /* StatsVC-Collection.swift */,
+				C09F93C6236E081B00AB8F68 /* StatsViewController.swift */,
+				C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */,
 			);
-			path = "Session View Controller";
+			path = "Stats View Controller";
 			sourceTree = "<group>";
 		};
 		C09F93CA236E0DF300AB8F68 /* Models */ = {
@@ -217,7 +217,7 @@
 			children = (
 				C09F93CF236E1BB900AB8F68 /* Settings View Controller */,
 				C09F93CE236E1BA700AB8F68 /* Start View Controller */,
-				C09F93C1236E062D00AB8F68 /* Session View Controller */,
+				C09F93C1236E062D00AB8F68 /* Stats View Controller */,
 				7165F75A227177320010F164 /* Still Image Heatmap View Controller */,
 				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
 				554F148D2203058100B828B0 /* Heatmap View Controller */,
@@ -371,17 +371,17 @@
 				71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */,
-				C09F93C9236E0C3F00AB8F68 /* SessionCollectionCell.swift in Sources */,
+				C09F93C9236E0C3F00AB8F68 /* StatsCollectionCell.swift in Sources */,
 				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
 				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,
 				C09F93C0236E003500AB8F68 /* Session.swift in Sources */,
-				C09F93C3236E064200AB8F68 /* SessionVC-UI.swift in Sources */,
+				C09F93C3236E064200AB8F68 /* StatsVC-UI.swift in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
-				C09F93C5236E065300AB8F68 /* SessionVC-Collection.swift in Sources */,
+				C09F93C5236E065300AB8F68 /* StatsVC-Collection.swift in Sources */,
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
-				C09F93C7236E081B00AB8F68 /* SearchViewController.swift in Sources */,
+				C09F93C7236E081B00AB8F68 /* StatsViewController.swift in Sources */,
 				C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
 				714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  SessionViewController.swift
 //  PostureCorrector
 //
 //  Created by Anita Shen on 11/2/19.
@@ -9,17 +9,21 @@
 import Foundation
 import UIKit
 
-class SearchViewController: UIViewController {
+class StatisticsViewController: UIViewController {
     var sessionArray = [Session]()
     var currSession : Session!
     
-    var sessionLabel: UILabel!
+    var gradientScaleImage: UIImageView!
+    var titleLabel: UILabel!
     var sessionCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Sessions"
+        self.title = "my stats"
+        
+        view.backgroundColor = UIColor.background
         collectionViewSetup()
+        //uiSetup()
     
     }
     

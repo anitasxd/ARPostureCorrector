@@ -25,9 +25,7 @@ class StartViewController: UIViewController {
     }
     
     func setupLayout() {
-        
-        view.backgroundColor = UIColor(red:0.47, green:0.50, blue:0.79, alpha:1.0)
-        
+        view.backgroundColor = UIColor.background
         appTitle = UILabel(frame: CGRect(x: 30, y: 100, width: view.frame.width-60, height: 60))
         appTitle.font = .boldSystemFont(ofSize: 50)
         appTitle.textColor = .white
@@ -37,14 +35,14 @@ class StartViewController: UIViewController {
         
         newSeshTitle = UIButton(frame: CGRect(x: 60, y: 350, width: view.frame.width-120, height: 30))
         newSeshTitle.titleLabel?.font = .boldSystemFont(ofSize: 35)
-        newSeshTitle.setTitle("start session", for: .normal)
+        newSeshTitle.setTitle("new session", for: .normal)
         newSeshTitle.addTarget(self, action: #selector(goToSessionView), for: .touchUpInside)
         view.addSubview(newSeshTitle)
         
         statsTitle = UIButton(frame: CGRect(x: 60, y: 600, width: view.frame.width-120, height: 30))
         statsTitle.titleLabel?.font = .boldSystemFont(ofSize: 35)
-        statsTitle.setTitle("my progress", for: .normal)
-        statsTitle.addTarget(self, action: #selector(goToSessionView), for: .touchUpInside)
+        statsTitle.setTitle("see my stats", for: .normal)
+        statsTitle.addTarget(self, action: #selector(goToStatsView), for: .touchUpInside)
         view.addSubview(statsTitle)
         
         let settingsIcon = UIImage(named: "settings")
@@ -56,11 +54,19 @@ class StartViewController: UIViewController {
         
     }
     
+    //go to new session page
     @objc func goToSessionView() {
         performSegue(withIdentifier: "toSession", sender: self)
         
     }
     
+    //go to my stats page
+    @objc func goToStatsView() {
+        performSegue(withIdentifier: "toStats", sender: self)
+        
+    }
+    
+    //got to settings page
     @objc func goToSettings() {
         performSegue(withIdentifier: "toSettings", sender: self)
         

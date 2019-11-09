@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SessionCollectionCell: UICollectionViewCell {
+class StatisticsCollectionCell: UICollectionViewCell {
     
     var color : UIColor!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = color
+        self.backgroundColor = UIColor.purple2
     }
     
 }

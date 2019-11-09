@@ -11,14 +11,18 @@ import UIKit
 
 extension UIColor {
     // Primary App Colors
+    
+    // BACKGROUND COLOR
+    static let background = UIColor.colorWithRGB(rgbValue: 0x482C53)
+    
     //lightest shade
-    static let purple1 = UIColor.colorWithRGB(rgbValue: 0xCEB8D6)
+    static let purple1 = UIColor.colorWithRGB(rgbValue: 0xF4EAF8)
     
     //second lightest
-    static let purple2 = UIColor.colorWithRGB(rgbValue: 0x94809D)
+    static let purple2 = UIColor.colorWithRGB(rgbValue: 0xCEB8D6)
     
     //third lightest
-    static let purple3 = UIColor.colorWithRGB(rgbValue: 0x4B3056)
+    static let purple3 = UIColor.colorWithRGB(rgbValue: 0x94809D)
     
     //darkest purple
     static let purple4 = UIColor.colorWithRGB(rgbValue: 0x260732)
