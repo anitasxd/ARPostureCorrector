@@ -9,6 +9,7 @@
 import UIKit
 import Vision
 import CoreMedia
+import AVFoundation
 
 class JointViewController: UIViewController {
     public typealias DetectObjectsCompletion = ([PredictedPoint?]?, Error?) -> Void
@@ -16,13 +17,19 @@ class JointViewController: UIViewController {
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
-    @IBOutlet weak var labelsTableView: UITableView!
+    //@IBOutlet weak var labelsTableView: UITableView!
     
     @IBOutlet weak var inferenceLabel: UILabel!
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
+    var endButton: UIButton!
+    
+    var player: AVAudioPlayer?
     var postureAlert: UIView!
+    
+    var totalCounter = 0
+    var badCounter = 0
     
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
@@ -49,10 +56,11 @@ class JointViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
         view.addSubview(postureAlert)
-        
+        view.backgroundColor = UIColor.background
+        uiSetup()
         // setup the model
         setUpModel()
         
@@ -60,7 +68,7 @@ class JointViewController: UIViewController {
         setUpCamera()
         
         // setup tableview datasource on bottom
-        labelsTableView.dataSource = self
+        //labelsTableView.dataSource = self
         
         // setup delegate for performance measurement
         👨‍🔧.delegate = self
@@ -80,6 +88,16 @@ class JointViewController: UIViewController {
         self.videoCapture.stop()
     }
     
+    func uiSetup() {
+        endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY, width: view.frame.width-120, height: 30))
+        endButton.titleLabel?.font = .boldSystemFont(ofSize: 35)
+        endButton.setTitle("end session", for: .normal)
+        endButton.titleLabel?.textColor = .white
+        endButton.backgroundColor = UIColor.purple3
+        endButton.addTarget(self, action: #selector(goToMain), for: .touchUpInside)
+        view.addSubview(endButton)
+    }
+
     // MARK: - Setup Core ML
     func setUpModel() {
         if let visionModel = try? VNCoreMLModel(for: EstimationModel().model) {
@@ -118,6 +136,11 @@ class JointViewController: UIViewController {
     
     func resizePreviewLayer() {
         videoCapture.previewLayer?.frame = videoPreview.bounds
+    }
+    
+    @objc func goToMain() {
+        performSegue(withIdentifier: "endToMain", sender: self)
+        
     }
 }
 
@@ -182,14 +205,21 @@ extension JointViewController {
                     if abs(angle) > 284 {
                         print("good POSTURE")
                         self.postureAlert.backgroundColor = .green
+                        totalCounter+=1
                     } else {
                         print("bad POSTURE")
-                        self.postureAlert.backgroundColor = .red
+                        totalCounter+=1
+                        badCounter+=1
+                        print(totalCounter)
+                        if badCounter % 20 == 0 {
+                            badPostureIndication()
+                        }
+                    
                     }
                 }
                 
                 // show key points description
-                self.showKeypointsDescription(with: predictedPoints)
+                //self.showKeypointsDescription(with: predictedPoints)
                 
                 // end of measure
                 self.👨‍🔧.🎬🤚()
@@ -201,11 +231,35 @@ extension JointViewController {
         }
     }
     
-    func showKeypointsDescription(with n_kpoints: [PredictedPoint?]) {
-        self.tableData = n_kpoints
-        self.labelsTableView.reloadData()
+//    func showKeypointsDescription(with n_kpoints: [PredictedPoint?]) {
+//        self.tableData = n_kpoints
+//        self.labelsTableView.reloadData()
+//    }
+    func badPostureIndication() {
+        self.postureAlert.backgroundColor = .red
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.backgroundColor = UIColor(red: 232, green: 67, blue: 66, alpha: 0.1)
+        }, completion:nil)
+        playSound()
+    }
+    
+    func playSound() {
+        let path = Bundle.main.path(forResource: "ding ", ofType : "wav")!
+        let url = URL(fileURLWithPath : path)
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+            print("ding!!!!!!!")
+            
+        } catch {
+            
+            print ("There is an issue with this code!")
+            
+        }
     }
 }
+
 
 // MARK: - UITableView Data Source
 extension JointViewController: UITableViewDataSource {

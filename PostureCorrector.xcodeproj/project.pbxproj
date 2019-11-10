@@ -35,6 +35,9 @@
 		C09F93C7236E081B00AB8F68 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C6236E081B00AB8F68 /* StatsViewController.swift */; };
 		C09F93C9236E0C3F00AB8F68 /* StatsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */; };
 		C09F93D3236E1D9400AB8F68 /* UIAttributeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93D2236E1D9400AB8F68 /* UIAttributeExtensions.swift */; };
+		C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0A85F4A2377A0F8001597A5 /* ding.wav */; };
+		C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0A85F4C2377A13F001597A5 /* genericDing.wav */; };
+		C0A85F4F2377C721001597A5 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A85F4E2377C721001597A5 /* UserData.swift */; };
 		C0D65F4E235BCA4F00E58A37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */; };
 		C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -80,6 +83,9 @@
 		C09F93C6236E081B00AB8F68 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionCell.swift; sourceTree = "<group>"; };
 		C09F93D2236E1D9400AB8F68 /* UIAttributeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAttributeExtensions.swift; sourceTree = "<group>"; };
+		C0A85F4A2377A0F8001597A5 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ding.wav; path = ../../ding.wav; sourceTree = "<group>"; };
+		C0A85F4C2377A13F001597A5 /* genericDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = genericDing.wav; path = ../../genericDing.wav; sourceTree = "<group>"; };
+		C0A85F4E2377C721001597A5 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +172,8 @@
 				C09F93CA236E0DF300AB8F68 /* Models */,
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
+				C0A85F4A2377A0F8001597A5 /* ding.wav */,
+				C0A85F4C2377A13F001597A5 /* genericDing.wav */,
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
@@ -203,6 +211,7 @@
 		C09F93CA236E0DF300AB8F68 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C0A85F4E2377C721001597A5 /* UserData.swift */,
 				C09F93BF236E003500AB8F68 /* Session.swift */,
 				554F148E2203059B00B828B0 /* Common */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
@@ -342,6 +351,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */,
+				C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */,
 				557F531D20ED252400CFCCD7 /* LaunchScreen.storyboard in Resources */,
 				557F531A20ED252400CFCCD7 /* Assets.xcassets in Resources */,
 				557F531820ED252100CFCCD7 /* Main.storyboard in Resources */,
@@ -383,6 +394,7 @@
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
 				C09F93C7236E081B00AB8F68 /* StatsViewController.swift in Sources */,
 				C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */,
+				C0A85F4F2377C721001597A5 /* UserData.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
 				714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */,
 				557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */,
