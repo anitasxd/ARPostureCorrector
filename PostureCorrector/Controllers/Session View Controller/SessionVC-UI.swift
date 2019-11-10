@@ -2,14 +2,14 @@
 //  SessionVC-UI.swift
 //  PostureCorrector
 //
-//  Created by Anita Shen on 11/2/19.
+//  Created by Neha Nagabothu on 11/9/19.
 //  Copyright © 2019 tucan9389. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-extension StatisticsViewController{
+extension SessionViewController{
     func uiSetup() {
 
         
@@ -31,17 +31,4 @@ extension StatisticsViewController{
         gradientScaleImage.image = UIImage(named: "Group 1")
         view.addSubview(gradientScaleImage)
     }
-    
-    func collectionViewSetup() {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 100, left: 20, bottom: 20, right: 20)
-        self.sessionCollection = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        self.sessionCollection.register(StatisticsCollectionCell.self, forCellWithReuseIdentifier: "sessionCell")
-        self.sessionCollection.backgroundColor = UIColor.background
-        sessionCollection.dataSource = self as UICollectionViewDataSource
-        sessionCollection.delegate = self as UICollectionViewDelegate
-        self.view.addSubview(sessionCollection)
-    }
-    
-    
 }

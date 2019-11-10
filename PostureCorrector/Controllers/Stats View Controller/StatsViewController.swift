@@ -23,7 +23,7 @@ class StatisticsViewController: UIViewController {
         
         view.backgroundColor = UIColor.background
         collectionViewSetup()
-        //uiSetup()
+        uiSetup()
     
     }
     
