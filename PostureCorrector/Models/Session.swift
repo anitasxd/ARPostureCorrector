@@ -9,17 +9,21 @@
 import Foundation
 
 class Session {
-    var date: String!
+    //var date: String!
     var postureCount: Int
+    var badPostureCount: Int
     var duration: Double
     var score: Double
     
-    init(userDate: String, userPosture: Int, userDuration: Double){
-        date = userDate
-        postureCount = userPosture
+    init(postureCount: Int, badPostureCount: Int, userDuration: Double){
+        //date = userDate
+        self.postureCount = postureCount
+        self.badPostureCount = badPostureCount
         duration = userDuration
         score = Double(postureCount) / duration * 100.0
     }
+    
+    
     
 }
 
