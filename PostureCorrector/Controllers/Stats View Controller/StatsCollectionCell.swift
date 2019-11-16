@@ -10,11 +10,17 @@ import UIKit
 
 class StatisticsCollectionCell: UICollectionViewCell {
     
-    var color : UIColor!
+    var cellColor : UIColor!
+    var colorButton : UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.purple2
+        //self.backgroundColor = UIColor.purple1
+        colorButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        colorButton.contentMode = .scaleAspectFit
+        colorButton.backgroundColor = cellColor
+        colorButton.clipsToBounds = true
+        contentView.addSubview(colorButton)
     }
     
 }

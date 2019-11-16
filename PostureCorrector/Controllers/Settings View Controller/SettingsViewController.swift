@@ -37,8 +37,7 @@ class SettingsViewController: UIViewController {
     }
     
     func setupLayout() {
-        
-        view.backgroundColor = UIColor(red:0.47, green:0.50, blue:0.79, alpha:1.0)
+        view.backgroundColor = UIColor.background
         
         screenTitle = UILabel(frame: CGRect(x: 30, y: 100, width: view.frame.width-60, height: 60))
         screenTitle.font = .boldSystemFont(ofSize: 50)
@@ -78,7 +77,7 @@ class SettingsViewController: UIViewController {
         applyButton = UIButton(frame: CGRect(x: view.frame.width/2 - 150, y: durationLabel.frame.maxY + 100, width: 300, height: 40))
         applyButton.setTitle("Apply", for: .normal)
         applyButton.titleLabel!.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        applyButton.backgroundColor = .purple
+        applyButton.backgroundColor = UIColor.purple3
         //        UIColor(red:0.33, green:0.77, blue:0.77, alpha:1.0)
         applyButton.layer.borderWidth = 0
         applyButton.layer.cornerRadius = applyButton.frame.height/4

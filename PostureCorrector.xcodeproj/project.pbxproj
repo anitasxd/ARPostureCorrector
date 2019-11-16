@@ -37,9 +37,9 @@
 		C09F93C7236E081B00AB8F68 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C6236E081B00AB8F68 /* StatsViewController.swift */; };
 		C09F93C9236E0C3F00AB8F68 /* StatsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */; };
 		C09F93D3236E1D9400AB8F68 /* UIAttributeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93D2236E1D9400AB8F68 /* UIAttributeExtensions.swift */; };
-		C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0A85F4A2377A0F8001597A5 /* ding.wav */; };
-		C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0A85F4C2377A13F001597A5 /* genericDing.wav */; };
 		C0A85F4F2377C721001597A5 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A85F4E2377C721001597A5 /* UserData.swift */; };
+		C0A85F532377CDAC001597A5 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0A85F522377CDAB001597A5 /* ding.wav */; };
+		C0ABE73B23807F6B003FA78A /* PostureCorrector.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0ABE73923807F6B003FA78A /* PostureCorrector.xcdatamodeld */; };
 		C0D65F4E235BCA4F00E58A37 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */; };
 		C0D65F50235C03B300E58A37 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -87,9 +87,9 @@
 		C09F93C6236E081B00AB8F68 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionCell.swift; sourceTree = "<group>"; };
 		C09F93D2236E1D9400AB8F68 /* UIAttributeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAttributeExtensions.swift; sourceTree = "<group>"; };
-		C0A85F4A2377A0F8001597A5 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ding.wav; path = ../../ding.wav; sourceTree = "<group>"; };
-		C0A85F4C2377A13F001597A5 /* genericDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = genericDing.wav; path = ../../genericDing.wav; sourceTree = "<group>"; };
 		C0A85F4E2377C721001597A5 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		C0A85F522377CDAB001597A5 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = SOURCE_ROOT; };
+		C0ABE73A23807F6B003FA78A /* PostureCorrector.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PostureCorrector.xcdatamodel; sourceTree = "<group>"; };
 		C0D65F4D235BCA4F00E58A37 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C0D65F4F235C03B300E58A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +153,7 @@
 		557F530620ED252100CFCCD7 = {
 			isa = PBXGroup;
 			children = (
+				C0ABE73923807F6B003FA78A /* PostureCorrector.xcdatamodeld */,
 				557F531120ED252100CFCCD7 /* PostureCorrector */,
 				554F14752202B07B00B828B0 /* PostureCorrectorTests */,
 				557F531020ED252100CFCCD7 /* Products */,
@@ -175,9 +176,8 @@
 				C09F93CB236E0E0300AB8F68 /* Controllers */,
 				C09F93CA236E0DF300AB8F68 /* Models */,
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
+				C0A85F522377CDAB001597A5 /* ding.wav */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
-				C0A85F4A2377A0F8001597A5 /* ding.wav */,
-				C0A85F4C2377A13F001597A5 /* genericDing.wav */,
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
@@ -365,8 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */,
-				C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */,
+				C0A85F532377CDAC001597A5 /* ding.wav in Resources */,
 				557F531D20ED252400CFCCD7 /* LaunchScreen.storyboard in Resources */,
 				557F531A20ED252400CFCCD7 /* Assets.xcassets in Resources */,
 				557F531820ED252100CFCCD7 /* Main.storyboard in Resources */,
@@ -396,6 +395,7 @@
 				71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */,
+				C0ABE73B23807F6B003FA78A /* PostureCorrector.xcdatamodeld in Sources */,
 				C09F93C9236E0C3F00AB8F68 /* StatsCollectionCell.swift in Sources */,
 				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
 				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,
@@ -675,6 +675,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C0ABE73923807F6B003FA78A /* PostureCorrector.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C0ABE73A23807F6B003FA78A /* PostureCorrector.xcdatamodel */,
+			);
+			currentVersion = C0ABE73A23807F6B003FA78A /* PostureCorrector.xcdatamodel */;
+			path = PostureCorrector.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 557F530720ED252100CFCCD7 /* Project object */;
 }

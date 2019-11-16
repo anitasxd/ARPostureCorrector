@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class StatisticsViewController: UIViewController {
-    var sessionArray = [Session]()
+    var user = UserData()
+    var sessionArray = UserData.userSessions
     var currSession : Session!
     
     var gradientScaleImage: UIImageView!

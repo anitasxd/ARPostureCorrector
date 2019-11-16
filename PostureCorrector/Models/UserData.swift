@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class UserData {
     static var userSessions = [Session]()
@@ -16,11 +17,12 @@ class UserData {
         let exSession2 = Session(postureCount: 1000, badPostureCount: 790, userDuration: 500)
         let exSession3 = Session(postureCount: 1000, badPostureCount: 555, userDuration: 256)
         let exSession4 = Session(postureCount: 1000, badPostureCount: 555, userDuration: 256)
-        
+
         UserData.userSessions.append(exSession1)
         UserData.userSessions.append(exSession2)
         UserData.userSessions.append(exSession3)
         UserData.userSessions.append(exSession4)
     }
+
     
 }

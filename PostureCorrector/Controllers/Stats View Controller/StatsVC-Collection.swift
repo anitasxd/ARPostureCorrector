@@ -11,7 +11,7 @@ import UIKit
 
 extension StatisticsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12 // need to change to how many sessions
+        return sessionArray.count // need to change to how many sessions
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -21,8 +21,23 @@ extension StatisticsViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sessionCell", for: indexPath) as! StatisticsCollectionCell
         cell.awakeFromNib()
-        cell.color = UIColor.purple2
+        var currSession = sessionArray[indexPath.item]
+        var score = Double(currSession.badPostureCount / currSession.postureCount) //currSession.value(forKeyPath: "postureScore") as? Double
+        if score > 0.0 && score <= 0.25 {
+            cell.cellColor = UIColor.purple1
+        } else if score > 0.25 && score <= 0.5 {
+            cell.cellColor = UIColor.purple2
+        } else if score > 0.5 && score <= 0.75{
+            cell.cellColor = UIColor.purple3
+        } else {
+            cell.cellColor = UIColor.purple4
+        }
         return cell
+//        if score! > 0.0 && score! <= 0.25 {
+//            cell.backgroundColor = UIColor.purple1
+//        } else if score! > 0.25 && score! <= 0.5{
+//            cell.color = UI
+//        }
         
     }
 

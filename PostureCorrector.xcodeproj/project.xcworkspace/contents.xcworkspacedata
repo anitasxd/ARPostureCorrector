@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/anitashen/Desktop/PoseEstimation-CoreML-master copy/PostureCorrector.xcodeproj">
+      location = "group:../ding.wav">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

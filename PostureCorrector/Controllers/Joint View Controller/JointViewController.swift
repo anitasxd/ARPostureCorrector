@@ -10,6 +10,7 @@ import UIKit
 import Vision
 import CoreMedia
 import AVFoundation
+import CoreData
 
 class JointViewController: UIViewController {
     public typealias DetectObjectsCompletion = ([PredictedPoint?]?, Error?) -> Void
@@ -243,8 +244,12 @@ extension JointViewController {
         playSound()
     }
     
+    
+    /*
+     sets the play sounds set by number of bad posture counts / 20
+     */
     func playSound() {
-        let path = Bundle.main.path(forResource: "ding ", ofType : "wav")!
+        let path = Bundle.main.path(forResource: "ding", ofType : "wav")!
         let url = URL(fileURLWithPath : path)
         
         do {

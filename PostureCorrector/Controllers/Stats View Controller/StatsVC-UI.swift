@@ -22,7 +22,7 @@ extension StatisticsViewController{
         titleLabel.textColor = .white
         view.addSubview(titleLabel)
         
-        gradientScaleImage  =  UIImageView(frame: CGRect(x: 200, y: 25, width: 200, height: 60))
+        gradientScaleImage  =  UIImageView(frame: CGRect(x:view.frame.width/2 - 100, y: titleLabel.frame.maxY, width: 200, height: 50))
         gradientScaleImage.contentMode = .center
         gradientScaleImage.contentMode = .scaleAspectFit
 //        gradientScaleImage.center = self.view.center
@@ -34,7 +34,7 @@ extension StatisticsViewController{
     
     func collectionViewSetup() {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 100, left: 20, bottom: 20, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 150, left: 20, bottom: 20, right: 20)
         self.sessionCollection = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         self.sessionCollection.register(StatisticsCollectionCell.self, forCellWithReuseIdentifier: "sessionCell")
         self.sessionCollection.backgroundColor = UIColor.background
