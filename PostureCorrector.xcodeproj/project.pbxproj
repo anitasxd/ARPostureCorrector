@@ -180,15 +180,10 @@
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
 				C0A85F522377CDAB001597A5 /* ding.wav */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
-<<<<<<< HEAD
-=======
-				C0A85F4A2377A0F8001597A5 /* ding.wav */,
-				8EDACECF2377CB58009D2975 /* Group 1.png */,
-				C0A85F4C2377A13F001597A5 /* genericDing.wav */,
->>>>>>> fa9290636f4e56a90fff8e7d908e27b5c639603e
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
+				8EDACECF2377CB58009D2975 /* Group 1.png */,
 			);
 			path = PostureCorrector;
 			sourceTree = "<group>";
@@ -373,13 +368,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				C0A85F532377CDAC001597A5 /* ding.wav in Resources */,
-=======
-				C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */,
 				8EDACED02377CB58009D2975 /* Group 1.png in Resources */,
-				C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */,
->>>>>>> fa9290636f4e56a90fff8e7d908e27b5c639603e
 				557F531D20ED252400CFCCD7 /* LaunchScreen.storyboard in Resources */,
 				557F531A20ED252400CFCCD7 /* Assets.xcassets in Resources */,
 				557F531820ED252100CFCCD7 /* Main.storyboard in Resources */,
