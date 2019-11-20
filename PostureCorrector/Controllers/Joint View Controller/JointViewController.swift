@@ -28,8 +28,13 @@ class JointViewController: UIViewController {
     
     var player: AVAudioPlayer?
     var postureAlert: UIView!
+    var timeStart = 0.0
+    var timer = Timer()
+    var timeLabel: UILabel!
     
-    var totalCounter = 0
+    var counterLabel: UILabel!
+    
+    var totalCounter = 5
     var badCounter = 0
     
     // MARK: - Performance Measurement Property
@@ -57,13 +62,14 @@ class JointViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
-        view.addSubview(postureAlert)
+        //navigationController?.navigationBar.barTintColor = UIColor.background
+       postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
+        //view.addSubview(postureAlert)
         view.backgroundColor = UIColor.background
         uiSetup()
         // setup the model
         setUpModel()
+        
         
         // setup camera
         setUpCamera()
@@ -82,7 +88,25 @@ class JointViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.videoCapture.start()
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Sessions")
+        
+        do {
+            UserData.userSessions = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -90,6 +114,24 @@ class JointViewController: UIViewController {
     }
     
     func uiSetup() {
+        // get the current date and time
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+        
+        // get the date time String from the date object
+        let sessionDate = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
+        
+        timeLabel = UILabel(frame: CGRect(x: 60, y: videoPreview.frame.minY, width: (view.frame.width/2)-120, height: 30))
+        timeLabel.text = String(timeStart)
+        view.addSubview(timeLabel)
+        
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
         endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY, width: view.frame.width-120, height: 30))
         endButton.titleLabel?.font = .boldSystemFont(ofSize: 35)
         endButton.setTitle("end session", for: .normal)
@@ -97,6 +139,15 @@ class JointViewController: UIViewController {
         endButton.backgroundColor = UIColor.purple3
         endButton.addTarget(self, action: #selector(goToMain), for: .touchUpInside)
         view.addSubview(endButton)
+        
+        counterLabel = UILabel(frame: CGRect(x: 120, y: videoPreview.frame.minY, width: 60, height: 30))
+        counterLabel.text = "\((badCounter/totalCounter) * 100) %"
+        view.addSubview(counterLabel)
+    }
+    
+    @objc func updateTimer() {
+        timeStart = timeStart + 0.1
+        timeLabel.text = String(format: "%.1f", timeStart)
     }
 
     // MARK: - Setup Core ML
@@ -130,6 +181,30 @@ class JointViewController: UIViewController {
         }
     }
     
+    func addToUserSessions() {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Sessions", in: managedContext)!
+        
+        let session = NSManagedObject(entity: entity, insertInto: managedContext)
+        session.setValue(totalCounter, forKeyPath: "totalPostureCount")
+        session.setValue(badCounter, forKeyPath: "badPostureCount")
+        
+
+        do {
+            try managedContext.save()
+            UserData.userSessions.append(session)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         resizePreviewLayer()
@@ -140,9 +215,19 @@ class JointViewController: UIViewController {
     }
     
     @objc func goToMain() {
+        addToUserSessions()
+//        let alert = UIAlertController(title: "Session Ending", message: "Are you sure you want to end this session?", preferredStyle: .alert)
+//
+//        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+//        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+//
+//        self.present(alert, animated: true)
+        timer.invalidate()
+        let duration = timeStart
         performSegue(withIdentifier: "endToMain", sender: self)
-        
     }
+    
+    
 }
 
 // MARK: - VideoCaptureDelegate
@@ -238,9 +323,26 @@ extension JointViewController {
 //    }
     func badPostureIndication() {
         self.postureAlert.backgroundColor = .red
-        UIView.animate(withDuration: 1.0, animations: {
-            self.view.backgroundColor = UIColor(red: 232, green: 67, blue: 66, alpha: 0.1)
-        }, completion:nil)
+        let deadlineTime = DispatchTime.now() + .seconds(2)
+        
+        let window = UIApplication.shared.keyWindow!
+        
+        let rectangleView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        rectangleView.backgroundColor = UIColor.redOverlay
+        
+        //        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20))
+        //        label.text = "Sit up straight!"
+        
+        //        rectangleView.addSubview(label)
+        
+        window.addSubview(rectangleView)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            rectangleView.removeFromSuperview()
+        }
+        //        self.view.backgroundColor = .clear
+//        UIView.animate(withDuration: 0.7, animations: {
+//            self.view.backgroundColor = UIColor(red: 232, green: 67, blue: 66, alpha: 0.1)
+//        }, completion:nil)
         playSound()
     }
     

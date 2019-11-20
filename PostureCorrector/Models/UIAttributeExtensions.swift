@@ -25,7 +25,9 @@ extension UIColor {
     static let purple3 = UIColor.colorWithRGB(rgbValue: 0x94809D)
     
     //darkest purple
-    static let purple4 = UIColor.colorWithRGB(rgbValue: 0x260732)
+    static let purple4 = UIColor.colorWithRGB(rgbValue: 0x6E5677)
+    
+    static let redOverlay = UIColor.colorWithRGBAlpha(rgbValue: 0xFF4242)
     
 }
 
@@ -67,6 +69,14 @@ public extension UIColor {
     ///   - alpha: alpha of the new color
     /// - Returns: new color
     class func colorWithRGB(rgbValue : UInt, alpha : CGFloat = 1.0) -> UIColor {
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255
+        let green = CGFloat((rgbValue & 0xFF00) >> 8) / 255
+        let blue = CGFloat(rgbValue & 0xFF) / 255
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
+    
+    class func colorWithRGBAlpha(rgbValue : UInt, alpha : CGFloat = 0.3) -> UIColor {
         let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255
         let green = CGFloat((rgbValue & 0xFF00) >> 8) / 255
         let blue = CGFloat(rgbValue & 0xFF) / 255

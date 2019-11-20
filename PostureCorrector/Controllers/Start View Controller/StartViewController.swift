@@ -20,8 +20,21 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        //navigationController?.navigationBar.barTintColor = UIColor.background
         setupLayout()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     func setupLayout() {
@@ -30,6 +43,7 @@ class StartViewController: UIViewController {
         appTitle.font = .boldSystemFont(ofSize: 50)
         appTitle.textColor = .white
         appTitle.textAlignment = .center
+        
         appTitle.text = "posity"
         view.addSubview(appTitle)
         

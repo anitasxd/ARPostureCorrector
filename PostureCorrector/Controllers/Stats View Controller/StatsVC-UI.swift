@@ -11,8 +11,13 @@ import UIKit
 
 extension StatisticsViewController{
     func uiSetup() {
-
-        
+//        backButton = UIButton(frame: CGRect(x: 10, y: 10, width: 40, height: 40))
+//        backButton.contentMode = .scaleAspectFit
+//        backButton.clipsToBounds = true
+//        //backButton.backgroundColor = cellColor
+//        backButton.setImage(UIImage(named: "backButton"), for: .normal)
+//        backButton.addTarget(self, action: #selector(backToMain), for: .touchUpInside)
+//        view.addSubview(backButton)
         
 //        titleLabel = UILabel(frame: CGRect(x: view.frame.width/2 - 100, y: gradientScaleImage.frame.minY - 250, width: 200, height: 60))
         titleLabel = UILabel(frame: CGRect(x: view.frame.width/2 - 100, y: 25, width: 200, height: 60))
@@ -28,7 +33,7 @@ extension StatisticsViewController{
 //        gradientScaleImage.center = self.view.center
         gradientScaleImage.clipsToBounds = true
         //        gradientScaleImage.image = UIImage(named: "gradientScale")
-        gradientScaleImage.image = UIImage(named: "Group 1")
+        gradientScaleImage.image = UIImage(named: "gradientScale")
         view.addSubview(gradientScaleImage)
     }
     
@@ -42,6 +47,10 @@ extension StatisticsViewController{
         sessionCollection.delegate = self as UICollectionViewDelegate
         self.view.addSubview(sessionCollection)
     }
+    
+//    @objc func backToMain(sender: UIButton) {
+//        performSegue(withIdentifier: "statsToMain", sender: self)
+//    }
     
     
 }

@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7mr-26-RFT">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2A6-k9-b47">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="qWV-6D-fZO">
+            <objects>
+                <navigationController id="2A6-k9-b47" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="79F-CU-DfS">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TPX-Ex-2sK" kind="relationship" relationship="rootViewController" id="NTE-3r-lNI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cA5-MV-i5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="-477"/>
+        </scene>
         <!--Start View Controller-->
         <scene sceneID="1Nn-8k-PnI">
             <objects>
                 <viewController id="TPX-Ex-2sK" customClass="StartViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0qR-Yq-h8w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Cr2-vp-pje"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VKy-Jo-PYE"/>
                     <connections>
                         <segue destination="9CU-0Y-vts" kind="show" identifier="toSession" id="9x7-Cz-ZH4"/>
                         <segue destination="sQQ-li-RsW" kind="show" identifier="toSettings" id="7N0-z1-Skg"/>
@@ -26,33 +45,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGB-BK-vZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="368" y="-496"/>
+            <point key="canvasLocation" x="1309.5999999999999" y="-496.55172413793105"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="VBB-st-Lny">
             <objects>
                 <viewController id="sQQ-li-RsW" customClass="SettingsViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LfY-BI-HxS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="a4r-fG-wcI"/>
                     </view>
                     <connections>
                         <segue destination="9CU-0Y-vts" kind="show" identifier="toMain" id="alQ-0b-s6m"/>
-                        <segue destination="TPX-Ex-2sK" kind="show" identifier="toMain" id="jQq-Tl-D6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8h-6J-F9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1303" y="-892"/>
+            <point key="canvasLocation" x="2244" y="-892.61083743842369"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="ezp-87-tVL">
             <objects>
                 <viewController id="75C-bF-SV5" customClass="StatisticsViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nZ3-Ub-JtQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FBr-MH-oo3"/>
@@ -60,44 +78,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyY-ry-ibH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="-893"/>
-        </scene>
-        <!--Session View Controller-->
-        <scene sceneID="9Vq-gN-vea">
-            <objects>
-                <viewController id="7mr-26-RFT" customClass="SessionViewController" customModule="PostureCorrector" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="00D-d8-vVx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="xW7-47-f6m"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="USC-Uv-r9Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2883" y="-900"/>
+            <point key="canvasLocation" x="3023.1999999999998" y="-893.3497536945813"/>
         </scene>
         <!--Joint-->
         <scene sceneID="kfC-DX-erp">
             <objects>
                 <viewController id="9CU-0Y-vts" customClass="JointViewController" customModule="PostureCorrector" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mcC-Vq-6yu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rN-aG-qiz">
-                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.63529411759999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="height" multiplier="375:500" id="BHb-1Q-Fwx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-8G-3ly" customClass="DrawingJointView" customModule="PostureCorrector">
-                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjo-wQ-8x2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="fps: xx" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pAx-Q4-tNr">
                                         <rect key="frame" x="251.33333333333334" y="13" width="107.66666666666666" height="18"/>
@@ -167,12 +170,12 @@
                         <outlet property="inferenceLabel" destination="wus-2Y-2XZ" id="NGh-0s-DWn"/>
                         <outlet property="jointView" destination="PLx-8G-3ly" id="GUs-bx-Tof"/>
                         <outlet property="videoPreview" destination="2rN-aG-qiz" id="fqh-TA-pPD"/>
-                        <segue destination="TPX-Ex-2sK" kind="show" identifier="endToMain" id="iMG-lo-oBf"/>
+                        <segue destination="TPX-Ex-2sK" kind="show" identifier="endToMain" id="etg-Om-KXz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hg5-2J-KwQ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="-199"/>
+            <point key="canvasLocation" x="2284" y="-199.50738916256159"/>
         </scene>
         <!--Heatmap-->
         <scene sceneID="T1V-KI-l77">
@@ -315,10 +318,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-gE-hl2">
-                                <rect key="frame" x="0.0" y="463" width="375" height="266"/>
+                                <rect key="frame" x="0.0" y="463" width="375" height="315"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhA-Z3-8F3">
-                                        <rect key="frame" x="4" y="88.666666666666629" width="88.666666666666671" height="88.666666666666686"/>
+                                        <rect key="frame" x="4" y="113" width="88.666666666666671" height="89"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg4-YB-cKm">
                                                 <rect key="frame" x="27" y="2" width="35" height="13"/>
@@ -327,7 +330,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd1-xq-t9Y">
-                                                <rect key="frame" x="5.3333333333333357" y="61.333333333333378" width="78" height="25.333333333333336"/>
+                                                <rect key="frame" x="5.3333333333333357" y="61.666666666666636" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -342,14 +345,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmX-0R-ylu" customClass="DrawingJointView" customModule="PostureCorrector" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="88.666666666666629" width="88.666666666666671" height="88.666666666666686"/>
+                                        <rect key="frame" x="4" y="113" width="88.666666666666671" height="89"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nmX-0R-ylu" secondAttribute="height" multiplier="1:1" id="Tiy-EW-Wkc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jh3-lS-lss">
-                                        <rect key="frame" x="96.666666666666686" y="88.666666666666629" width="89" height="88.666666666666686"/>
+                                        <rect key="frame" x="96.666666666666686" y="113" width="89" height="89"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOa-p8-EV0">
                                                 <rect key="frame" x="26" y="2" width="37" height="13"/>
@@ -358,7 +361,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfQ-Uc-l2d">
-                                                <rect key="frame" x="5.3333333333333286" y="61.333333333333378" width="78" height="25.333333333333336"/>
+                                                <rect key="frame" x="5.3333333333333286" y="61.666666666666636" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -373,11 +376,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqC-WD-m3H" customClass="DrawingJointView" customModule="PostureCorrector" customModuleProvider="target">
-                                        <rect key="frame" x="96.666666666666686" y="88.666666666666629" width="89" height="88.666666666666686"/>
+                                        <rect key="frame" x="96.666666666666686" y="113" width="89" height="89"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxO-gy-dTc">
-                                        <rect key="frame" x="189.66666666666666" y="88.666666666666629" width="88.666666666666657" height="88.666666666666686"/>
+                                        <rect key="frame" x="189.66666666666666" y="113" width="88.666666666666657" height="89"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2x-sE-fIv">
                                                 <rect key="frame" x="25.666666666666686" y="2" width="37" height="13"/>
@@ -386,7 +389,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm5-07-cCU">
-                                                <rect key="frame" x="5.3333333333333428" y="61.333333333333378" width="78" height="25.333333333333336"/>
+                                                <rect key="frame" x="5.3333333333333428" y="61.666666666666636" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -401,11 +404,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0b-kV-Nw7" customClass="DrawingJointView" customModule="PostureCorrector" customModuleProvider="target">
-                                        <rect key="frame" x="189.66666666666666" y="88.666666666666629" width="88.666666666666657" height="88.666666666666686"/>
+                                        <rect key="frame" x="189.66666666666666" y="113" width="88.666666666666657" height="89"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWv-uq-9oZ">
-                                        <rect key="frame" x="282.33333333333331" y="88.666666666666629" width="88.666666666666686" height="88.666666666666686"/>
+                                        <rect key="frame" x="282.33333333333331" y="113" width="88.666666666666686" height="89"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-Y7-zs9">
                                                 <rect key="frame" x="25.333333333333371" y="2" width="38" height="13"/>
@@ -414,7 +417,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29C-uK-GGx">
-                                                <rect key="frame" x="5.3333333333333712" y="61.333333333333378" width="78" height="25.333333333333336"/>
+                                                <rect key="frame" x="5.3333333333333712" y="61.666666666666636" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -429,7 +432,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFq-3u-WKh" customClass="DrawingJointView" customModule="PostureCorrector" customModuleProvider="target">
-                                        <rect key="frame" x="282.33333333333331" y="88.666666666666629" width="88.666666666666686" height="88.666666666666686"/>
+                                        <rect key="frame" x="282.33333333333331" y="113" width="88.666666666666686" height="89"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -582,28 +585,6 @@ on top right</string>
             </objects>
             <point key="canvasLocation" x="2080.8000000000002" y="1144.5812807881773"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="1S5-jE-9aw">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ChF-RA-qh1" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CY8-xX-sgY">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.89803921568627454" green="0.32928588270424491" blue="0.38221201599876475" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9CU-0Y-vts" kind="relationship" relationship="viewControllers" id="8ii-cb-uIc"/>
-                        <segue destination="b0e-Kh-5x3" kind="relationship" relationship="viewControllers" id="AYI-bm-5Zp"/>
-                        <segue destination="oYo-ii-wbS" kind="relationship" relationship="viewControllers" id="n2h-3j-L6y"/>
-                        <segue destination="QDI-Y9-7F6" kind="relationship" relationship="viewControllers" id="A8l-cA-jt5"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cmE-od-fjx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="400.80000000000001" y="133.00492610837438"/>
-        </scene>
         <!--Pose Matching-->
         <scene sceneID="TRq-KZ-pI3">
             <objects>
@@ -626,6 +607,6 @@ on top right</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="alQ-0b-s6m"/>
-        <segue reference="jQq-Tl-D6G"/>
+        <segue reference="etg-Om-KXz"/>
     </inferredMetricsTieBreakers>
 </document>
