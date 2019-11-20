@@ -30,6 +30,7 @@
 		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 		8EDACECC2377C7D1009D2975 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDACECB2377C7D1009D2975 /* SessionViewController.swift */; };
 		8EDACECE2377C837009D2975 /* SessionVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDACECD2377C837009D2975 /* SessionVC-UI.swift */; };
+		8EDACED02377CB58009D2975 /* Group 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EDACECF2377CB58009D2975 /* Group 1.png */; };
 		C08FA20123525A04002AB6E9 /* hourglass_model in Resources */ = {isa = PBXBuildFile; fileRef = C08FA1FF23525A04002AB6E9 /* hourglass_model */; };
 		C09F93C0236E003500AB8F68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93BF236E003500AB8F68 /* Session.swift */; };
 		C09F93C3236E064200AB8F68 /* StatsVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */; };
@@ -80,6 +81,7 @@
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 		8EDACECB2377C7D1009D2975 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		8EDACECD2377C837009D2975 /* SessionVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionVC-UI.swift"; sourceTree = "<group>"; };
+		8EDACECF2377CB58009D2975 /* Group 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Group 1.png"; path = "Assets.xcassets/Group 1.imageset/Group 1.png"; sourceTree = "<group>"; };
 		C08FA1FF23525A04002AB6E9 /* hourglass_model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = hourglass_model; path = "PostureCorrector/ML Models/hourglass_model"; sourceTree = SOURCE_ROOT; };
 		C09F93BF236E003500AB8F68 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatsVC-UI.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,12 @@
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
 				C0A85F522377CDAB001597A5 /* ding.wav */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
+<<<<<<< HEAD
+=======
+				C0A85F4A2377A0F8001597A5 /* ding.wav */,
+				8EDACECF2377CB58009D2975 /* Group 1.png */,
+				C0A85F4C2377A13F001597A5 /* genericDing.wav */,
+>>>>>>> fa9290636f4e56a90fff8e7d908e27b5c639603e
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
@@ -365,7 +373,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				C0A85F532377CDAC001597A5 /* ding.wav in Resources */,
+=======
+				C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */,
+				8EDACED02377CB58009D2975 /* Group 1.png in Resources */,
+				C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */,
+>>>>>>> fa9290636f4e56a90fff8e7d908e27b5c639603e
 				557F531D20ED252400CFCCD7 /* LaunchScreen.storyboard in Resources */,
 				557F531A20ED252400CFCCD7 /* Assets.xcassets in Resources */,
 				557F531820ED252100CFCCD7 /* Main.storyboard in Resources */,
