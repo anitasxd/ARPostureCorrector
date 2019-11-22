@@ -36,6 +36,7 @@ class JointViewController: UIViewController {
     
     var totalCounter = 5
     var badCounter = 0
+    var sessionDate = ""
     
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
@@ -123,7 +124,7 @@ class JointViewController: UIViewController {
         formatter.dateStyle = .short
         
         // get the date time String from the date object
-        let sessionDate = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
+        sessionDate = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
         
         timeLabel = UILabel(frame: CGRect(x: 60, y: videoPreview.frame.minY, width: (view.frame.width/2)-120, height: 30))
         timeLabel.text = String(timeStart)
@@ -181,7 +182,7 @@ class JointViewController: UIViewController {
         }
     }
     
-    func addToUserSessions() {
+    func addToUserSessions(duration: String) {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -194,8 +195,9 @@ class JointViewController: UIViewController {
         let session = NSManagedObject(entity: entity, insertInto: managedContext)
         session.setValue(totalCounter, forKeyPath: "totalPostureCount")
         session.setValue(badCounter, forKeyPath: "badPostureCount")
+        session.setValue(duration, forKey: "sessionDuration")
+        session.setValue(sessionDate, forKey: "date")
         
-
         do {
             try managedContext.save()
             UserData.userSessions.append(session)
@@ -215,7 +217,7 @@ class JointViewController: UIViewController {
     }
     
     @objc func goToMain() {
-        addToUserSessions()
+        
 //        let alert = UIAlertController(title: "Session Ending", message: "Are you sure you want to end this session?", preferredStyle: .alert)
 //
 //        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
@@ -223,7 +225,8 @@ class JointViewController: UIViewController {
 //
 //        self.present(alert, animated: true)
         timer.invalidate()
-        let duration = timeStart
+        let duration = String(timeStart)
+        addToUserSessions(duration: duration)
         performSegue(withIdentifier: "endToMain", sender: self)
     }
     
