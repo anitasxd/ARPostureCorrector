@@ -81,7 +81,7 @@ class SettingsViewController: UIViewController {
         durationLabel = UILabel(frame: CGRect(x: 20, y: 290, width: view.frame.width-60, height: 60))
         durationLabel.font = .boldSystemFont(ofSize: 22)
         durationLabel.textColor = .white
-        durationLabel.text = "duration"
+        durationLabel.text = "sensitivity"
         view.addSubview(durationLabel)
         
         durationValueLabel = UILabel(frame: CGRect(x: durationSlider.frame.maxX, y: 290, width: view.frame.width-60, height: 60))
@@ -106,6 +106,9 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func goBackToMain() {
+        let visionPage = JointViewController()
+        visionPage.settingsThreshold = thresholdValue
+        visionPage.settingsSensitivity = durationValue
         performSegue(withIdentifier: "toMain", sender: self)
         UserDefaults.standard.set(thresholdSlider.value, forKey: "thresholdValue")
         UserDefaults.standard.set(thresholdValueLabel.text, forKey: "thresholdValue")

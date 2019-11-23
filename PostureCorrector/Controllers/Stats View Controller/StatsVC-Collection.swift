@@ -27,11 +27,11 @@ extension StatisticsViewController: UICollectionViewDataSource, UICollectionView
         let cellScore = BPostureCount! / TPostureCount!
         //Double(currSession.badPostureCount) / Double(currSession.postureCount)
         print(cellScore)
-        if cellScore > 0.0 && cellScore <= 0.25 {
+        if cellScore > 0.0 && cellScore <= 0.50 {
             cell.colorImage.image = UIImage(named: "purple1")
-        } else if cellScore > 0.25 && cellScore <= 0.5 {
+        } else if cellScore > 0.50 && cellScore <= 0.7 {
             cell.colorImage.image = UIImage(named: "purple2")
-        } else if cellScore > 0.5 && cellScore <= 0.75{
+        } else if cellScore > 0.7 && cellScore <= 0.9{
             cell.colorImage.image = UIImage(named: "purple3")
         } else {
             cell.colorImage.image = UIImage(named: "purple4")

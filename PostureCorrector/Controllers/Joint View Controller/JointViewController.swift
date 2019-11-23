@@ -36,8 +36,18 @@ class JointViewController: UIViewController {
     
     var totalCounter = 5
     var badCounter = 0
+    
+    var userBadCount = 0
+    var userScore = 100.0
+
     var sessionDate = ""
     
+    var settingsThreshold : Float?
+    var threshold = 284
+    
+    var settingsSensitivity : Float?
+    var sensitivity = 20
+
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
     
@@ -63,6 +73,11 @@ class JointViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        thresholdChanges(_settingThreshold: settingsThreshold ?? 0.0)
+        sensitivityChanges(_settingsSensitivity: settingsSensitivity ?? 0.0)
+//        print("this is threshold \(settingsThreshold)")
+//        print("this is sensitvitiy \(settingsSensitivity)")
         //navigationController?.navigationBar.barTintColor = UIColor.background
        postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
         //view.addSubview(postureAlert)
@@ -70,8 +85,6 @@ class JointViewController: UIViewController {
         uiSetup()
         // setup the model
         setUpModel()
-        
-        
         // setup camera
         setUpCamera()
         
@@ -81,6 +94,37 @@ class JointViewController: UIViewController {
         // setup delegate for performance measurement
         👨‍🔧.delegate = self
     }
+    
+    func thresholdChanges(_settingThreshold: Float) {
+        switch settingsThreshold {
+        case 1.0:
+            threshold = 284
+        case 0.75:
+            threshold = 280
+        case 0.5:
+            threshold = 276
+        case 0.25:
+            threshold = 272
+        default:
+            threshold = 284
+        }
+    }
+    
+    func sensitivityChanges(_settingsSensitivity: Float) {
+        switch settingsSensitivity {
+        case 1.0:
+            sensitivity = 20
+        case 0.75:
+            sensitivity = 40
+        case 0.5:
+            sensitivity = 60
+        case 0.25:
+            sensitivity = 80
+        default:
+            sensitivity = 20
+        }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -136,10 +180,13 @@ class JointViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
         endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY, width: view.frame.width-120, height: 30))
-        endButton.titleLabel?.font = .boldSystemFont(ofSize: 35)
         endButton.setTitle("end session", for: .normal)
-        endButton.titleLabel?.textColor = .white
+        endButton.titleLabel!.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         endButton.backgroundColor = UIColor.purple3
+        //        UIColor(red:0.33, green:0.77, blue:0.77, alpha:1.0)
+        endButton.layer.borderWidth = 0
+        endButton.layer.cornerRadius = endButton.frame.height/4
+        endButton.setTitleColor(.white, for: .normal)
         endButton.addTarget(self, action: #selector(goToMain), for: .touchUpInside)
         view.addSubview(endButton)
         
@@ -293,7 +340,7 @@ extension JointViewController {
                     mvFilterAngle.addAngle(newAngle: result)
                     let angle = mvFilterAngle.angle
                     //self.angleLabel.text = "\(String(format: "%.1f", angle))"
-                    if abs(angle) > 284 {
+                    if abs(angle) > Double(threshold) {
                         print("good POSTURE")
                         self.postureAlert.backgroundColor = .green
                         totalCounter+=1
@@ -302,7 +349,7 @@ extension JointViewController {
                         totalCounter+=1
                         badCounter+=1
                         print(totalCounter)
-                        if badCounter % 20 == 0 {
+                        if badCounter % sensitivity == 0 {
                             badPostureIndication()
                         }
                     
@@ -329,6 +376,9 @@ extension JointViewController {
     func badPostureIndication() {
         self.postureAlert.backgroundColor = .red
         let deadlineTime = DispatchTime.now() + .seconds(1)
+        userBadCount = userBadCount + 1
+        userScore =  (1 - (Double(badCounter) / Double(totalCounter))) * 100
+        print("userScore \(userScore)")
         
         let window = UIApplication.shared.keyWindow!
         
@@ -395,9 +445,9 @@ extension JointViewController: UITableViewDataSource {
 // MARK: - 📏(Performance Measurement) Delegate
 extension JointViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
-        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) ms"
-        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) ms"
-        self.fpsLabel.text = "fps: \(fps)"
+        self.inferenceLabel.text = "Time: \((timeLabel.text)!) seconds"
+        self.etimeLabel.text = "Posture Count: \(userBadCount)"
+        self.fpsLabel.text = "Score: \(userScore)%"
     }
 }
 
