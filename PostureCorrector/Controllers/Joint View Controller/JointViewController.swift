@@ -88,6 +88,7 @@ class JointViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         self.videoCapture.start()
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -111,6 +112,7 @@ class JointViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         self.videoCapture.stop()
     }
     
@@ -326,7 +328,7 @@ extension JointViewController {
 //    }
     func badPostureIndication() {
         self.postureAlert.backgroundColor = .red
-        let deadlineTime = DispatchTime.now() + .seconds(2)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
         
         let window = UIApplication.shared.keyWindow!
         

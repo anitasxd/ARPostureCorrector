@@ -23,10 +23,9 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "my stats"
-
         //navigationController?.navigationBar.barTintColor = UIColor.background
         view.backgroundColor = UIColor.background
+        navigationController?.navigationBar.barTintColor = UIColor.purple3
         collectionViewSetup()
         uiSetup()
     

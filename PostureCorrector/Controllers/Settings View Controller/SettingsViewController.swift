@@ -28,6 +28,8 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor.purple3
+
         setupLayout()
         // Do any additional setup after loading the view.
     }
@@ -41,7 +43,7 @@ class SettingsViewController: UIViewController {
     func setupLayout() {
         view.backgroundColor = UIColor.background
         
-        screenTitle = UILabel(frame: CGRect(x: 30, y: 100, width: view.frame.width-60, height: 60))
+        screenTitle = UILabel(frame: CGRect(x: 30, y: (navigationController?.navigationBar.frame.height ?? 20) + 30, width: view.frame.width-60, height: 60))
         screenTitle.font = .boldSystemFont(ofSize: 50)
         screenTitle.textColor = .white
         screenTitle.textAlignment = .center

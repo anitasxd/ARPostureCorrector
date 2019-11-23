@@ -20,7 +20,7 @@ extension StatisticsViewController{
 //        view.addSubview(backButton)
         
 //        titleLabel = UILabel(frame: CGRect(x: view.frame.width/2 - 100, y: gradientScaleImage.frame.minY - 250, width: 200, height: 60))
-        titleLabel = UILabel(frame: CGRect(x: view.frame.width/2 - 100, y: 25, width: 200, height: 60))
+        titleLabel = UILabel(frame: CGRect(x: view.frame.width/2 - 100, y: (navigationController?.navigationBar.frame.height ?? 20) + 30, width: 200, height: 60))
         titleLabel.text = "my stats"
         titleLabel.font = .boldSystemFont(ofSize: 35)
         titleLabel.textAlignment = .center

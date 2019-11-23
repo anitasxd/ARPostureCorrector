@@ -609,4 +609,5 @@ on top right</string>
         <segue reference="alQ-0b-s6m"/>
         <segue reference="etg-Om-KXz"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
