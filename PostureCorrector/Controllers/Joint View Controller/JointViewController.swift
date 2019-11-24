@@ -31,8 +31,8 @@ class JointViewController: UIViewController {
     var timeStart = 0.0
     var timer = Timer()
     var timeLabel: UILabel!
-    
-    var counterLabel: UILabel!
+//
+//    var counterLabel: UILabel!
     
     var totalCounter = 5
     var badCounter = 0
@@ -174,8 +174,8 @@ class JointViewController: UIViewController {
         
         timeLabel = UILabel(frame: CGRect(x: 60, y: videoPreview.frame.minY, width: (view.frame.width/2)-120, height: 30))
         timeLabel.text = String(timeStart)
-        view.addSubview(timeLabel)
-        
+        //view.addSubview(timeLabel)
+//
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
@@ -190,9 +190,9 @@ class JointViewController: UIViewController {
         endButton.addTarget(self, action: #selector(goToMain), for: .touchUpInside)
         view.addSubview(endButton)
         
-        counterLabel = UILabel(frame: CGRect(x: 120, y: videoPreview.frame.minY, width: 60, height: 30))
-        counterLabel.text = "\((badCounter/totalCounter) * 100) %"
-        view.addSubview(counterLabel)
+//        counterLabel = UILabel(frame: CGRect(x: 120, y: videoPreview.frame.minY, width: 60, height: 30))
+//        counterLabel.text = "\((badCounter/totalCounter) * 100) %"
+//        view.addSubview(counterLabel)
     }
     
     @objc func updateTimer() {
