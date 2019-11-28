@@ -46,7 +46,7 @@ class JointViewController: UIViewController {
     var threshold = 284
     
     var settingsSensitivity : Float?
-    var sensitivity = 20
+    var sensitivity = 40
 
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
@@ -113,15 +113,15 @@ class JointViewController: UIViewController {
     func sensitivityChanges(_settingsSensitivity: Float) {
         switch settingsSensitivity {
         case 1.0:
-            sensitivity = 20
-        case 0.75:
             sensitivity = 40
-        case 0.5:
+        case 0.75:
             sensitivity = 60
-        case 0.25:
+        case 0.5:
             sensitivity = 80
+        case 0.25:
+            sensitivity = 100
         default:
-            sensitivity = 20
+            sensitivity = 40
         }
     }
 
