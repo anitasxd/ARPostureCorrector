@@ -12,7 +12,8 @@ import CoreData
 
 class StatisticsViewController: UIViewController {
     //var sessionArray = UserData.userSessions
-    var currSession : Session!
+    var currSession : NSManagedObject!
+    var currSessionIndex: Int!
     
     var gradientScaleImage: UIImageView!
     var titleLabel: UILabel!

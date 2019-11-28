@@ -9,6 +9,21 @@
 import Foundation
 import CoreData
 
+
+class SessionManagedObject: NSManagedObject {
+
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Sessions> {
+    return NSFetchRequest<Sessions>(entityName: "Sessions")
+  }
+
+  @NSManaged var date: String?
+  @NSManaged var totalPostureCount: NSNumber?
+  @NSManaged var badPostureCount: NSNumber?
+  @NSManaged var sessionDuration: NSDecimalNumber?
+//  @NSManaged var score: NSDecimalNumber?
+
+}
+
 class UserData {
     static var userSessions: [NSManagedObject] = []
     

@@ -106,14 +106,21 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func goBackToMain() {
-        let visionPage = JointViewController()
-        visionPage.settingsThreshold = thresholdValue
-        visionPage.settingsSensitivity = durationValue
         performSegue(withIdentifier: "toMain", sender: self)
         UserDefaults.standard.set(thresholdSlider.value, forKey: "thresholdValue")
         UserDefaults.standard.set(thresholdValueLabel.text, forKey: "thresholdValue")
         UserDefaults.standard.set(durationSlider.value, forKey: "durationValue")
         UserDefaults.standard.set(durationValueLabel.text, forKey: "durationValue")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let visionPage = segue.destination as? JointViewController{
+            visionPage.settingsThreshold = thresholdValue
+            visionPage.settingsSensitivity = durationValue
+        }
+
     }
     
     

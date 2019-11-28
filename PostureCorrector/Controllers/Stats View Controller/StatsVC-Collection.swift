@@ -24,41 +24,37 @@ extension StatisticsViewController: UICollectionViewDataSource, UICollectionView
         let currSession = UserData.userSessions[indexPath.item]
         let BPostureCount = currSession.value(forKeyPath: "badPostureCount") as? Double
         let TPostureCount = currSession.value(forKeyPath: "totalPostureCount") as? Double
-        let cellScore = BPostureCount! / TPostureCount!
+        let cellScore = 1 - (BPostureCount! / TPostureCount!)
         //Double(currSession.badPostureCount) / Double(currSession.postureCount)
         print(cellScore)
-        if cellScore > 0.0 && cellScore <= 0.50 {
-            cell.colorImage.image = UIImage(named: "purple1")
-        } else if cellScore > 0.50 && cellScore <= 0.7 {
-            cell.colorImage.image = UIImage(named: "purple2")
-        } else if cellScore > 0.7 && cellScore <= 0.9{
-            cell.colorImage.image = UIImage(named: "purple3")
-        } else {
+        if cellScore > 0.0 && cellScore <= 0.2 {
             cell.colorImage.image = UIImage(named: "purple4")
+        } else if cellScore > 0.2 && cellScore <= 0.4 {
+            cell.colorImage.image = UIImage(named: "purple3")
+        } else if cellScore > 0.4 && cellScore <= 0.6{
+            cell.colorImage.image = UIImage(named: "purple2")
+        } else {
+            cell.colorImage.image = UIImage(named: "purple1")
         }
         return cell
-//        if score! > 0.0 && score! <= 0.25 {
-//            cell.backgroundColor = UIColor.purple1
-//        } else if score! > 0.25 && score! <= 0.5{
-//            cell.color = UI
-//        }
+
         
     }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        profilePokemon = favoritePokemon[indexPath.row]
-//        UserDefaults.standard.set(favoritePokemon, forKey: "favorites")
-//        self.performSegue(withIdentifier: "toProfile", sender: self)
-//    }
-//
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currSession = UserData.userSessions[indexPath.item]
+        currSessionIndex = indexPath.item
+        self.performSegue(withIdentifier: "toDetail", sender: self)
+    }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        if let profile = segue.destination as? ProfileViewController{
-//            profile.selectedPokemon = profilePokemon
-//        }
-//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let detail = segue.destination as? DetailViewController{
+            detail.sessionIndex = currSessionIndex
+        }
+    }
     
     
     
