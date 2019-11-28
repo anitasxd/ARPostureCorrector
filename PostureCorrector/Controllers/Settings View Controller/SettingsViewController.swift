@@ -43,10 +43,11 @@ class SettingsViewController: UIViewController {
     func setupLayout() {
         view.backgroundColor = UIColor.background
         
-        screenTitle = UILabel(frame: CGRect(x: 30, y: (navigationController?.navigationBar.frame.height ?? 20) + 30, width: view.frame.width-60, height: 60))
+        screenTitle = UILabel(frame: CGRect(x: 30, y: (navigationController?.navigationBar.frame.height ?? 20) + 35, width: view.frame.width-60, height: 60))
         screenTitle.font = .boldSystemFont(ofSize: 50)
         screenTitle.textColor = .white
         screenTitle.textAlignment = .center
+        screenTitle.center.x = self.view.center.x
         screenTitle.text = "settings"
         view.addSubview(screenTitle)
         

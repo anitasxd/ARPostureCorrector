@@ -49,6 +49,7 @@ class DetailViewController: UIViewController {
         appTitle.font = .boldSystemFont(ofSize: 50)
         appTitle.textColor = .white
         appTitle.textAlignment = .center
+        appTitle.center.x = self.view.center.x
         
         appTitle.text = "your session"
         view.addSubview(appTitle)
