@@ -121,7 +121,7 @@ class JointViewController: UIViewController {
         case 0.25:
             sensitivity = 100
         default:
-            sensitivity = 30
+            sensitivity = 20
         }
     }
 
