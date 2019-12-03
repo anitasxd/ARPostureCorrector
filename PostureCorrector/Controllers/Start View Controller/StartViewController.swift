@@ -91,7 +91,18 @@ class StartViewController: UIViewController {
     
     //go to new session page
     @objc func goToSessionView() {
-        performSegue(withIdentifier: "toSession", sender: self)
+
+        if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            performSegue(withIdentifier: "toSession", sender: self)
+        } else {
+            let actionController: UIAlertController = UIAlertController(title: "Camera is not available",message: "", preferredStyle: .alert)
+            let cancelAction: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { action -> Void  in
+                       //Just dismiss the action sheet
+            }
+            actionController.addAction(cancelAction)
+            self.present(actionController, animated: true, completion: nil)
+        }
+        
         
     }
     

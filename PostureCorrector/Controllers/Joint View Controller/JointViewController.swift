@@ -179,7 +179,7 @@ class JointViewController: UIViewController {
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
-        endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY, width: view.frame.width-120, height: 30))
+        endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY - 20, width: view.frame.width-120, height: 30))
         endButton.setTitle("end session", for: .normal)
         endButton.titleLabel!.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         endButton.backgroundColor = UIColor.purple3
