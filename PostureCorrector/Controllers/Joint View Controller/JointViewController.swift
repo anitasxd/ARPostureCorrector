@@ -113,7 +113,7 @@ class JointViewController: UIViewController {
     func sensitivityChanges(_settingsSensitivity: Float) {
         switch settingsSensitivity {
         case 1.0:
-            sensitivity = 40
+            sensitivity = 20
         case 0.75:
             sensitivity = 60
         case 0.5:
@@ -121,7 +121,7 @@ class JointViewController: UIViewController {
         case 0.25:
             sensitivity = 100
         default:
-            sensitivity = 40
+            sensitivity = 30
         }
     }
 
