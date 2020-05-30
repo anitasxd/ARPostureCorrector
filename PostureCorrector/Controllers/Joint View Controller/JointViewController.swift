@@ -28,10 +28,26 @@ class JointViewController: UIViewController {
     
     var player: AVAudioPlayer?
     var postureAlert: UIView!
+    var timeStart = 0.0
+    var timer = Timer()
+    var timeLabel: UILabel!
+//
+//    var counterLabel: UILabel!
     
-    var totalCounter = 0
+    var totalCounter = 5
     var badCounter = 0
     
+    var userBadCount = 0
+    var userScore = 100.0
+
+    var sessionDate = ""
+    
+    var settingsThreshold : Float?
+    var threshold = 284
+    
+    var settingsSensitivity : Float?
+    var sensitivity = 40
+
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
     
@@ -57,14 +73,18 @@ class JointViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
-        view.addSubview(postureAlert)
+        
+        thresholdChanges(_settingThreshold: settingsThreshold ?? 0.0)
+        sensitivityChanges(_settingsSensitivity: settingsSensitivity ?? 0.0)
+//        print("this is threshold \(settingsThreshold)")
+//        print("this is sensitvitiy \(settingsSensitivity)")
+        //navigationController?.navigationBar.barTintColor = UIColor.background
+       postureAlert = UIView(frame: CGRect(x: 30, y: 3*view.frame.height/4, width: view.frame.width-60, height: 60))
+        //view.addSubview(postureAlert)
         view.backgroundColor = UIColor.background
         uiSetup()
         // setup the model
         setUpModel()
-        
         // setup camera
         setUpCamera()
         
@@ -75,28 +95,109 @@ class JointViewController: UIViewController {
         👨‍🔧.delegate = self
     }
     
+    func thresholdChanges(_settingThreshold: Float) {
+        switch settingsThreshold {
+        case 1.0:
+            threshold = 284
+        case 0.75:
+            threshold = 280
+        case 0.5:
+            threshold = 276
+        case 0.25:
+            threshold = 272
+        default:
+            threshold = 284
+        }
+    }
+    
+    func sensitivityChanges(_settingsSensitivity: Float) {
+        switch settingsSensitivity {
+        case 1.0:
+            sensitivity = 20
+        case 0.75:
+            sensitivity = 60
+        case 0.5:
+            sensitivity = 80
+        case 0.25:
+            sensitivity = 100
+        default:
+            sensitivity = 20
+        }
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         self.videoCapture.start()
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Sessions")
+        
+        do {
+            UserData.userSessions = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         self.videoCapture.stop()
     }
     
     func uiSetup() {
-        endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY, width: view.frame.width-120, height: 30))
-        endButton.titleLabel?.font = .boldSystemFont(ofSize: 35)
+        // get the current date and time
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+        
+        // get the date time String from the date object
+        sessionDate = formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
+        
+        timeLabel = UILabel(frame: CGRect(x: 60, y: videoPreview.frame.minY, width: (view.frame.width/2)-120, height: 30))
+        timeLabel.text = String(timeStart)
+        //view.addSubview(timeLabel)
+//
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
+        endButton = UIButton(frame: CGRect(x: 60, y: videoPreview.frame.maxY - 20, width: view.frame.width-120, height: 30))
         endButton.setTitle("end session", for: .normal)
-        endButton.titleLabel?.textColor = .white
+        endButton.titleLabel!.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         endButton.backgroundColor = UIColor.purple3
+        //        UIColor(red:0.33, green:0.77, blue:0.77, alpha:1.0)
+        endButton.layer.borderWidth = 0
+        endButton.layer.cornerRadius = endButton.frame.height/4
+        endButton.setTitleColor(.white, for: .normal)
         endButton.addTarget(self, action: #selector(goToMain), for: .touchUpInside)
         view.addSubview(endButton)
+        
+//        counterLabel = UILabel(frame: CGRect(x: 120, y: videoPreview.frame.minY, width: 60, height: 30))
+//        counterLabel.text = "\((badCounter/totalCounter) * 100) %"
+//        view.addSubview(counterLabel)
+    }
+    
+    @objc func updateTimer() {
+        timeStart = timeStart + 0.1
+        timeLabel.text = String(format: "%.1f", timeStart)
     }
 
     // MARK: - Setup Core ML
@@ -130,6 +231,31 @@ class JointViewController: UIViewController {
         }
     }
     
+    func addToUserSessions(duration: String) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Sessions", in: managedContext)!
+        
+        let session = NSManagedObject(entity: entity, insertInto: managedContext)
+        session.setValue(totalCounter, forKeyPath: "totalPostureCount")
+        session.setValue(badCounter, forKeyPath: "badPostureCount")
+        session.setValue(duration, forKey: "sessionDuration")
+        session.setValue(sessionDate, forKey: "date")
+        
+        do {
+            try managedContext.save()
+            UserData.userSessions.append(session)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         resizePreviewLayer()
@@ -140,9 +266,20 @@ class JointViewController: UIViewController {
     }
     
     @objc func goToMain() {
-        performSegue(withIdentifier: "endToMain", sender: self)
         
+//        let alert = UIAlertController(title: "Session Ending", message: "Are you sure you want to end this session?", preferredStyle: .alert)
+//
+//        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+//        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+//
+//        self.present(alert, animated: true)
+        timer.invalidate()
+        let duration = String(timeStart)
+        addToUserSessions(duration: duration)
+        performSegue(withIdentifier: "endToMain", sender: self)
     }
+    
+    
 }
 
 // MARK: - VideoCaptureDelegate
@@ -203,7 +340,7 @@ extension JointViewController {
                     mvFilterAngle.addAngle(newAngle: result)
                     let angle = mvFilterAngle.angle
                     //self.angleLabel.text = "\(String(format: "%.1f", angle))"
-                    if abs(angle) > 284 {
+                    if abs(angle) > Double(threshold) {
                         print("good POSTURE")
                         self.postureAlert.backgroundColor = .green
                         totalCounter+=1
@@ -212,7 +349,7 @@ extension JointViewController {
                         totalCounter+=1
                         badCounter+=1
                         print(totalCounter)
-                        if badCounter % 20 == 0 {
+                        if badCounter % sensitivity == 0 {
                             badPostureIndication()
                         }
                     
@@ -238,9 +375,29 @@ extension JointViewController {
 //    }
     func badPostureIndication() {
         self.postureAlert.backgroundColor = .red
-        UIView.animate(withDuration: 1.0, animations: {
-            self.view.backgroundColor = UIColor(red: 232, green: 67, blue: 66, alpha: 0.1)
-        }, completion:nil)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        userBadCount = userBadCount + 1
+        userScore =  (1 - (Double(badCounter) / Double(totalCounter))) * 100
+        print("userScore \(userScore)")
+        
+        let window = UIApplication.shared.keyWindow!
+        
+        let rectangleView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        rectangleView.backgroundColor = UIColor.redOverlay
+        
+        //        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20))
+        //        label.text = "Sit up straight!"
+        
+        //        rectangleView.addSubview(label)
+        
+        window.addSubview(rectangleView)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            rectangleView.removeFromSuperview()
+        }
+        //        self.view.backgroundColor = .clear
+//        UIView.animate(withDuration: 0.7, animations: {
+//            self.view.backgroundColor = UIColor(red: 232, green: 67, blue: 66, alpha: 0.1)
+//        }, completion:nil)
         playSound()
     }
     
@@ -288,9 +445,9 @@ extension JointViewController: UITableViewDataSource {
 // MARK: - 📏(Performance Measurement) Delegate
 extension JointViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
-        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) ms"
-        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) ms"
-        self.fpsLabel.text = "fps: \(fps)"
+        self.inferenceLabel.text = "Time: \((timeLabel.text)!) seconds"
+        self.etimeLabel.text = "Posture Count: \(userBadCount)"
+        self.fpsLabel.text = "Score: \(userScore)%"
     }
 }
 

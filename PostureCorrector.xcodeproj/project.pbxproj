@@ -28,9 +28,8 @@
 		71EF2DC522C4878D009391C8 /* PredictedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC422C4878D009391C8 /* PredictedPoint.swift */; };
 		71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
 		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
-		8EDACECC2377C7D1009D2975 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDACECB2377C7D1009D2975 /* SessionViewController.swift */; };
-		8EDACECE2377C837009D2975 /* SessionVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDACECD2377C837009D2975 /* SessionVC-UI.swift */; };
 		8EDACED02377CB58009D2975 /* Group 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EDACECF2377CB58009D2975 /* Group 1.png */; };
+		C009D10D238F3DAB005D5893 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009D10C238F3DAB005D5893 /* DetailViewController.swift */; };
 		C08FA20123525A04002AB6E9 /* hourglass_model in Resources */ = {isa = PBXBuildFile; fileRef = C08FA1FF23525A04002AB6E9 /* hourglass_model */; };
 		C09F93C0236E003500AB8F68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93BF236E003500AB8F68 /* Session.swift */; };
 		C09F93C3236E064200AB8F68 /* StatsVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */; };
@@ -79,9 +78,8 @@
 		71EF2DC422C4878D009391C8 /* PredictedPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };
 		71F1455122F1C890000ED787 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
-		8EDACECB2377C7D1009D2975 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
-		8EDACECD2377C837009D2975 /* SessionVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionVC-UI.swift"; sourceTree = "<group>"; };
 		8EDACECF2377CB58009D2975 /* Group 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Group 1.png"; path = "Assets.xcassets/Group 1.imageset/Group 1.png"; sourceTree = "<group>"; };
+		C009D10C238F3DAB005D5893 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C08FA1FF23525A04002AB6E9 /* hourglass_model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = hourglass_model; path = "PostureCorrector/ML Models/hourglass_model"; sourceTree = SOURCE_ROOT; };
 		C09F93BF236E003500AB8F68 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatsVC-UI.swift"; sourceTree = "<group>"; };
@@ -180,15 +178,10 @@
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
 				C0A85F522377CDAB001597A5 /* ding.wav */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
-<<<<<<< HEAD
-=======
-				C0A85F4A2377A0F8001597A5 /* ding.wav */,
-				8EDACECF2377CB58009D2975 /* Group 1.png */,
-				C0A85F4C2377A13F001597A5 /* genericDing.wav */,
->>>>>>> fa9290636f4e56a90fff8e7d908e27b5c639603e
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
+				8EDACECF2377CB58009D2975 /* Group 1.png */,
 			);
 			path = PostureCorrector;
 			sourceTree = "<group>";
@@ -209,21 +202,21 @@
 			path = "Still Image Heatmap View Controller";
 			sourceTree = "<group>";
 		};
-		8EDACECA2377C7B9009D2975 /* Session View Controller */ = {
+		C009D10B238F3BE0005D5893 /* Details View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8EDACECB2377C7D1009D2975 /* SessionViewController.swift */,
-				8EDACECD2377C837009D2975 /* SessionVC-UI.swift */,
+				C009D10C238F3DAB005D5893 /* DetailViewController.swift */,
 			);
-			path = "Session View Controller";
+			path = "Details View Controller";
 			sourceTree = "<group>";
 		};
 		C09F93C1236E062D00AB8F68 /* Stats View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C009D10B238F3BE0005D5893 /* Details View Controller */,
+				C09F93C6236E081B00AB8F68 /* StatsViewController.swift */,
 				C09F93C2236E064200AB8F68 /* StatsVC-UI.swift */,
 				C09F93C4236E065300AB8F68 /* StatsVC-Collection.swift */,
-				C09F93C6236E081B00AB8F68 /* StatsViewController.swift */,
 				C09F93C8236E0C3F00AB8F68 /* StatsCollectionCell.swift */,
 			);
 			path = "Stats View Controller";
@@ -247,7 +240,6 @@
 			children = (
 				C09F93CF236E1BB900AB8F68 /* Settings View Controller */,
 				C09F93CE236E1BA700AB8F68 /* Start View Controller */,
-				8EDACECA2377C7B9009D2975 /* Session View Controller */,
 				C09F93C1236E062D00AB8F68 /* Stats View Controller */,
 				7165F75A227177320010F164 /* Still Image Heatmap View Controller */,
 				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
@@ -373,13 +365,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				C0A85F532377CDAC001597A5 /* ding.wav in Resources */,
-=======
-				C0A85F4D2377A13F001597A5 /* genericDing.wav in Resources */,
 				8EDACED02377CB58009D2975 /* Group 1.png in Resources */,
-				C0A85F4B2377A0F9001597A5 /* ding.wav in Resources */,
->>>>>>> fa9290636f4e56a90fff8e7d908e27b5c639603e
 				557F531D20ED252400CFCCD7 /* LaunchScreen.storyboard in Resources */,
 				557F531A20ED252400CFCCD7 /* Assets.xcassets in Resources */,
 				557F531820ED252100CFCCD7 /* Main.storyboard in Resources */,
@@ -413,11 +400,10 @@
 				C09F93C9236E0C3F00AB8F68 /* StatsCollectionCell.swift in Sources */,
 				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
 				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,
-				8EDACECE2377C837009D2975 /* SessionVC-UI.swift in Sources */,
-				8EDACECC2377C7D1009D2975 /* SessionViewController.swift in Sources */,
 				C09F93C0236E003500AB8F68 /* Session.swift in Sources */,
 				C09F93C3236E064200AB8F68 /* StatsVC-UI.swift in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
+				C009D10D238F3DAB005D5893 /* DetailViewController.swift in Sources */,
 				C09F93C5236E065300AB8F68 /* StatsVC-Collection.swift in Sources */,
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
@@ -636,7 +622,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.anitashen.PostureCorrector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -654,7 +640,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.anitashen.PostureCorrector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

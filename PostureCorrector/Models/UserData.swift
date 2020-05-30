@@ -9,20 +9,35 @@
 import Foundation
 import CoreData
 
-class UserData {
-    static var userSessions = [Session]()
-    
-    init(){
-        let exSession1 = Session(postureCount: 1000, badPostureCount: 254, userDuration: 256)
-        let exSession2 = Session(postureCount: 1000, badPostureCount: 790, userDuration: 500)
-        let exSession3 = Session(postureCount: 1000, badPostureCount: 555, userDuration: 256)
-        let exSession4 = Session(postureCount: 1000, badPostureCount: 555, userDuration: 256)
 
-        UserData.userSessions.append(exSession1)
-        UserData.userSessions.append(exSession2)
-        UserData.userSessions.append(exSession3)
-        UserData.userSessions.append(exSession4)
-    }
+class SessionManagedObject: NSManagedObject {
+
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Sessions> {
+    return NSFetchRequest<Sessions>(entityName: "Sessions")
+  }
+
+  @NSManaged var date: String?
+  @NSManaged var totalPostureCount: NSNumber?
+  @NSManaged var badPostureCount: NSNumber?
+  @NSManaged var sessionDuration: NSDecimalNumber?
+//  @NSManaged var score: NSDecimalNumber?
+
+}
+
+class UserData {
+    static var userSessions: [NSManagedObject] = []
+    
+//    init(){
+//        let exSession1 = Session(postureCount: 1000, badPostureCount: 254, userDuration: 256)
+//        let exSession2 = Session(postureCount: 1000, badPostureCount: 790, userDuration: 500)
+//        let exSession3 = Session(postureCount: 1000, badPostureCount: 555, userDuration: 256)
+//        let exSession4 = Session(postureCount: 1000, badPostureCount: 555, userDuration: 256)
+//
+//        UserData.userSessions.append(exSession1)
+//        UserData.userSessions.append(exSession2)
+//        UserData.userSessions.append(exSession3)
+//        UserData.userSessions.append(exSession4)
+//    }
 
     
 }
