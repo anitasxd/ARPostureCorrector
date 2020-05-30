@@ -7,3 +7,8 @@ Features include settings page to adjust tracking sensitivity, AR tracking log t
 
 ![Home Screen](/images/home.png)
 
+![Session Screen](/images/session.png)
+
+![Settings Screen](/images/settings.png)
+![Tracking Screen](/images/track.png)
+
